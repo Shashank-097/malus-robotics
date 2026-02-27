@@ -65,3 +65,21 @@ html {
   --text-dark: #0F172A;
   --muted: #6B7280;
 }
+
+:root {
+  /* Brand */
+  --accent: #5B8770;
+  --accent-soft: rgba(91, 135, 112, 0.15);
+
+  /* Industrial Metals */
+  --metal-dark: #4B3A3B;
+  --metal-mid: #9AA2A2;
+  --metal-light: #C6CCCC;
+
+  /* Base */
+  --bg-main: #0A0C0B;
+  --bg-soft: #111413;
+  --surface: #F1EEE8;
+  --text-main: #E6EAE8;
+  --text-muted: #9AA2A2;
+}
