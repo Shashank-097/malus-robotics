@@ -24,3 +24,44 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+@import "tailwindcss";
+
+/* ===============================
+   MALUS ROBOTICS THEME
+================================= */
+
+:root {
+  --primary: #0B1F3A;
+  --accent: #00B3FF;
+  --steel: #1E293B;
+  --light-gray: #F1F5F9;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+
+:root {
+  --metal-dark: #1C1F24;
+  --metal-mid: #2A2E35;
+  --metal-light: #3A3F47;
+  --steel: #6B7280;
+  --accent: #00A3FF; /* electric blue */
+  --text-light: #E5E7EB;
+}
+
+:root {
+  --metal-dark: #1B1E23;
+  --metal-mid: #2A2F36;
+  --metal-light: #3A3F47;
+
+  --light-bg: #F5F7FA;
+  --light-card: #FFFFFF;
+
+  --accent: #00A3FF;
+  --text-light: #E5E7EB;
+  --text-dark: #0F172A;
+  --muted: #6B7280;
+}
