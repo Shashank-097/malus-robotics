@@ -4,74 +4,118 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden flex items-center bg-black text-gray-200">
-
-      {/* ================= VIDEO BACKGROUND ================= */}
+    <section
+      className="relative min-h-[100svh] w-full overflow-hidden
+                 flex items-center bg-black text-gray-200"
+    >
+      {/* ===== VIDEO BACKGROUND ===== */}
       <video
         autoPlay
         loop
         muted
         playsInline
+        preload="metadata"
+        poster="/images/hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover scale-105"
       >
         <source src="/videos/hero.mp4" type="video/mp4" />
       </video>
 
-      {/* ================= METALLIC MATTE OVERLAY ================= */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--metal-dark)]/95 via-[var(--metal-mid)]/85 to-black/95" />
+      {/* ===== DARK INDUSTRIAL OVERLAY ===== */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#4B3A3B]/90 via-black/85 to-black/95" />
 
-      {/* ================= ENGINEERING GRID ================= */}
-      <div className="absolute inset-0 opacity-[0.12] bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:120px_120px]" />
+      {/* ===== ENGINEERING GRID ===== */}
+      <div
+        className="absolute inset-0 opacity-[0.08]
+        bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),
+            linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)]
+        bg-[size:120px_120px]"
+      />
 
-      {/* ================= MAIN CONTENT ================= */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-
+      {/* ===== CONTENT ===== */}
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-10">
+        {/* ===== HEADLINE ===== */}
         <motion.h1
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1 }}
-          className="text-6xl md:text-8xl font-bold leading-[0.9] tracking-tight max-w-5xl"
+          transition={{ duration: 1.1, ease: "easeOut" }}
+          className="
+            font-bold tracking-tight
+            leading-[1.05]
+            text-[clamp(2.6rem,6vw,5.5rem)]
+            max-w-[20ch]
+          "
         >
-          Automation.
+          Industrial
           <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">
-            Engineered for Industry.
+          <span
+            className="text-transparent bg-clip-text
+            bg-gradient-to-r from-[#5B8770] via-[#C6CCCC] to-[#5B8770]"
+          >
+            Automation & Robotics
           </span>
         </motion.h1>
 
+        {/* ===== SUBTEXT ===== */}
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="mt-6 text-lg md:text-xl text-gray-400 max-w-2xl"
+          transition={{ delay: 0.35 }}
+          className="
+            mt-8 text-gray-400
+            text-[clamp(1rem,1.6vw,1.25rem)]
+            max-w-[60ch]
+          "
         >
-          Robotics integration, PLC systems, digital twin simulation,
-          and intelligent automation built for real-world industrial environments.
+          End-to-end robotics integration, PLC & SCADA systems,
+          digital twin simulation, and intelligent automation
+          engineered for real industrial environments.
         </motion.p>
 
+        {/* ===== CTA ===== */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="mt-10 flex gap-6"
+          className="mt-12 flex flex-wrap gap-6"
         >
-          <button className="px-8 py-3 bg-[var(--accent)] text-white font-semibold tracking-wide rounded-md hover:scale-105 hover:shadow-[0_0_40px_var(--accent)] transition-all">
+          <motion.button
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.97 }}
+            className="
+              px-8 py-3 rounded-md font-semibold tracking-wide
+              bg-[#5B8770] text-black
+              hover:shadow-[0_0_35px_rgba(91,135,112,0.7)]
+              transition-all
+            "
+          >
             Explore Solutions
-          </button>
+          </motion.button>
 
-          <button className="px-8 py-3 border border-gray-600 text-gray-300 rounded-md hover:border-[var(--accent)] hover:text-[var(--accent)] transition">
+          <motion.button
+            whileHover={{ scale: 1.04 }}
+            className="
+              px-8 py-3 rounded-md border border-[#9AA2A2]
+              text-[#C6CCCC]
+              hover:border-[#5B8770] hover:text-[#5B8770]
+              transition
+            "
+          >
             View Projects
-          </button>
+          </motion.button>
         </motion.div>
 
-        {/* ================= TRUST STRIP ================= */}
+        {/* ===== TRUST STRIP ===== */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="mt-20 flex flex-wrap gap-12 text-sm text-gray-500 uppercase tracking-widest"
+          className="
+            mt-20 flex flex-wrap gap-x-12 gap-y-4
+            text-xs uppercase tracking-widest text-gray-500
+          "
         >
-          <span>Industrial Robotics</span>
+          <span>Robotics Integration</span>
           <span>PLC & SCADA</span>
           <span>Digital Twin</span>
           <span>System Integration</span>
@@ -79,18 +123,19 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ================= SCROLL INDICATOR ================= */}
+      {/* ===== SCROLL INDICATOR ===== */}
       <motion.div
+        className="absolute bottom-14 left-1/2 -translate-x-1/2
+                   text-xs tracking-widest text-gray-500"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-14 left-1/2 -translate-x-1/2 text-gray-500 text-xs tracking-widest"
       >
         SCROLL
       </motion.div>
 
       <motion.div
-        className="absolute bottom-6 left-1/2 w-[1px] h-12 bg-gray-600"
+        className="absolute bottom-6 left-1/2 w-[1px] h-12 bg-[#5B8770]"
         animate={{ scaleY: [0, 1, 0] }}
         transition={{ repeat: Infinity, duration: 1.6 }}
       />
