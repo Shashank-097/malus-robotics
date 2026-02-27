@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+/* ================= SERVICES DATA ================= */
 const services = [
   {
     title: "Industrial Robotics",
@@ -55,7 +56,7 @@ const services = [
   {
     title: "System Integration",
     description:
-      "End-to-end automation integration covering system design, electrical coordination, commissioning, and support.",
+      "End-to-end automation integration covering system design, electrical coordination, commissioning, and long-term support.",
     image: "/images/integration.jpg",
     metrics: [
       { label: "Delivery Model", value: "Project-Based" },
@@ -72,80 +73,96 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="relative py-44 bg-[var(--light-bg)] text-[var(--text-dark)]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section
+      className="
+        relative
+        bg-[var(--light-bg)]
+        text-[var(--text-dark)]
+        pt-6 sm:pt-10 lg:pt-14
+        pb-20 sm:pb-28 lg:pb-32
+      "
+    >
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
 
-        {/* HEADER */}
+        {/* ================= HEADER ================= */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-4xl mb-36"
+          className="max-w-3xl mb-14 sm:mb-18"
         >
-          <span className="text-xs uppercase tracking-[0.3em] text-[var(--accent)]">
+          <span className="text-xs uppercase tracking-[0.25em] text-[var(--accent)]">
             Industrial Automation Services
           </span>
 
-          <h2 className="mt-6 text-5xl md:text-6xl font-bold leading-tight">
+          <h2 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
             Engineered for
             <br />
             Industrial Reliability
           </h2>
 
-          <p className="mt-8 text-lg text-[var(--muted)] max-w-3xl">
-            We build automation systems with a focus on reliability, clarity,
-            and long-term operational performance — designed to scale as your
-            production grows.
+          <p className="mt-6 text-base sm:text-lg text-[var(--muted)]">
+            Modular automation services designed for performance, reliability,
+            and long-term industrial scalability.
           </p>
         </motion.div>
 
-        {/* SERVICES */}
-        <div className="space-y-44">
+        {/* ================= CARDS GRID ================= */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-10">
           {services.map((service, index) => (
-            <motion.div
+            <motion.article
               key={index}
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9 }}
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="grid md:grid-cols-2 gap-24 items-center"
+              className="
+                group
+                relative
+                rounded-2xl
+                overflow-hidden
+                bg-white
+                border border-black/5
+                shadow-[0_20px_60px_rgba(0,0,0,0.08)]
+              "
             >
               {/* IMAGE */}
-              <div className="relative rounded-3xl overflow-hidden shadow-[0_50px_140px_rgba(0,0,0,0.18)]">
+              <div className="relative h-56 overflow-hidden">
                 <Image
                   src={service.image}
                   alt={service.title}
-                  width={820}
-                  height={620}
-                  className="rounded-3xl"
+                  fill
+                  className="
+                    object-cover
+                    transition-transform duration-500
+                    group-hover:scale-105
+                  "
                 />
                 <div className="absolute inset-0 bg-black/30" />
               </div>
 
               {/* CONTENT */}
-              <div>
-                <div className="mb-6 w-20 h-[3px] bg-[var(--accent)]" />
+              <div className="p-6 sm:p-7">
+                <div className="mb-3 w-10 h-[3px] bg-[var(--accent)]" />
 
-                <h3 className="text-3xl md:text-4xl font-semibold">
+                <h3 className="text-xl sm:text-2xl font-semibold">
                   {service.title}
                 </h3>
 
-                <p className="mt-6 text-lg text-[var(--muted)] leading-relaxed max-w-xl">
+                <p className="mt-4 text-sm sm:text-base text-[var(--muted)] leading-relaxed">
                   {service.description}
                 </p>
 
                 {/* METRICS */}
-                <div className="mt-10 grid grid-cols-2 gap-6">
+                <div className="mt-6 grid grid-cols-2 gap-4">
                   {service.metrics.map((metric, i) => (
-                    <div
-                      key={i}
-                      className="border-l-2 border-[var(--accent)] pl-4"
-                    >
-                      <div className="text-lg font-semibold">
+                    <div key={i} className="border-l-2 border-[var(--accent)] pl-3">
+                      <div className="text-sm font-semibold">
                         {metric.value}
                       </div>
-                      <div className="text-sm text-[var(--muted)]">
+                      <div className="text-xs text-[var(--muted)]">
                         {metric.label}
                       </div>
                     </div>
@@ -153,11 +170,17 @@ export default function ServicesSection() {
                 </div>
 
                 {/* TAGS */}
-                <div className="mt-10 flex flex-wrap gap-3">
+                <div className="mt-5 flex flex-wrap gap-2">
                   {service.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="px-4 py-2 text-xs font-medium rounded-full bg-black/5 text-black/70"
+                      className="
+                        px-3 py-1
+                        text-[10px] font-medium
+                        rounded-full
+                        bg-black/5
+                        text-black/70
+                      "
                     >
                       {tag}
                     </span>
@@ -165,23 +188,30 @@ export default function ServicesSection() {
                 </div>
 
                 {/* CTA */}
-                <div className="mt-12 text-sm font-semibold tracking-wide text-[var(--accent)]">
-                  Discuss Technical Scope →
+                <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)] group-hover:gap-3 transition-all">
+                  Explore Service <span>→</span>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
-        {/* ENTERPRISE CTA */}
-        <div className="mt-56 border-t pt-20 text-center">
-          <p className="text-sm uppercase tracking-widest text-[var(--muted)]">
+        {/* ================= FOOTER CTA ================= */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-24 sm:mt-28 pt-14 border-t text-center"
+        >
+          <p className="text-xs uppercase tracking-widest text-[var(--muted)]">
             Built to Scale With You
           </p>
-          <h3 className="mt-6 text-3xl md:text-4xl font-bold">
+          <h3 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-bold">
             Let’s Design Your Automation Roadmap
           </h3>
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );
